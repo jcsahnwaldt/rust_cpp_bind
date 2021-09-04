@@ -1,6 +1,7 @@
 # CC := gcc-11
 CC := clang -mlinker-version=0 # for Homebrew clang
 CFLAGS := -Wall -Wextra -Wpedantic -O3
+LDLIBS := -pthread -ldl # for Ubuntu GCC and Clang
 
 main: main.c target/debug/libproject.a
 
