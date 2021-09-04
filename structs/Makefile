@@ -10,11 +10,11 @@ run: $(BIN)/project $(BIN)/main
 	./$(BIN)/project
 	./$(BIN)/main
 
-build:
-	cargo build
+$(BIN)/libproject.a: $(SRC)/lib.rs
+	CARGO_INCREMENTAL=0 cargo build --lib
 
-$(BIN)/libproject.a: build
-$(BIN)/project: build
+$(BIN)/project: $(SRC)/main.rs
+	CARGO_INCREMENTAL=0 cargo build --bins
 
 $(BIN)/%: $(SRC)/%
 	cp $< $@
