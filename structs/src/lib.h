@@ -1,8 +1,15 @@
 #ifndef LIB_H
 #define LIB_H
 
+#include <stdarg.h>
+#include <stdbool.h>
 #include <stdint.h>
+#include <stdlib.h>
 
-int32_t rs_foo(int32_t);
+typedef struct Foo {
+  int32_t i;
+} Foo;
 
-#endif // LIB_H
+struct Foo rs_foo(struct Foo f);
+
+#endif /* LIB_H */

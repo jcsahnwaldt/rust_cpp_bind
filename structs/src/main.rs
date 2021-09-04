@@ -1,3 +1,6 @@
+use project::*;
+
 fn main() {
-    project::rs_foo(1);
+  let f = Foo {i: 1};
+  rs_foo(f);
 }

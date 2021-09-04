@@ -1,3 +1,4 @@
 /target
 *.lock
-src/main
+src/main_c
+src/main_cpp
