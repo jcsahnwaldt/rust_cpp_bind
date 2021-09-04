@@ -17,7 +17,7 @@ impl Foo {
 }
 
 #[no_mangle]
-pub extern "C" fn rs_foo(f: Foo) -> Foo {
-  println!("Hello Rust World: {}", f.i);
-  return Foo { i: f.i + 1 };
+pub extern "C" fn rs_foo(f: &mut Foo) {
+  println!("Hello Rust World: {}", f.get_i());
+  f.set_i(f.get_i() + 1);
 }

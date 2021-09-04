@@ -19,7 +19,7 @@ void set_i(Foo *self, int32_t i);
 
 int32_t get_i(const Foo *self);
 
-Foo rs_foo(Foo f);
+void rs_foo(Foo *f);
 
 } // extern "C"
 

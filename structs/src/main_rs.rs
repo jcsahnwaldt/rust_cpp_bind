@@ -1,6 +1,6 @@
 use foo::*;
 
 fn main() {
-  let f = Foo {i: 1};
-  rs_foo(f);
+  let mut f = Foo {i: 1};
+  rs_foo(&mut f);
 }
