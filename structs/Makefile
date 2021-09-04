@@ -3,16 +3,23 @@ CC := clang -mlinker-version=0 # for Homebrew clang
 CFLAGS := -Wall -Wextra -Wpedantic -O3
 LDLIBS := -pthread -ldl # for Ubuntu GCC and Clang
 
-main: main.c target/debug/libproject.a
+SRC := src
+BIN := target/debug
+
+run: $(BIN)/project $(BIN)/main
+	./$(BIN)/project
+	./$(BIN)/main
 
 build:
 	cargo build
 
-target/debug/libproject.a: build
+$(BIN)/libproject.a: build
+$(BIN)/project: build
 
-run: main
-	./target/debug/project
-	./main
+$(BIN)/%: $(SRC)/%
+	cp $< $@
+
+$(SRC)/main: $(SRC)/main.c $(BIN)/libproject.a
 
 clean:
-	$(RM) -r main target *.lock
+	$(RM) -r src/main target *.lock
