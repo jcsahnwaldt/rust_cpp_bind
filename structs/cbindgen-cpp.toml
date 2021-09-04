@@ -1,2 +1,2 @@
 language = "C++"
-include_guard = "LIB_HPP"
+include_guard = "FOO_HPP"

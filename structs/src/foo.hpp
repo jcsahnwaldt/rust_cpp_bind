@@ -1,5 +1,5 @@
-#ifndef LIB_HPP
-#define LIB_HPP
+#ifndef FOO_HPP
+#define FOO_HPP
 
 #include <cstdarg>
 #include <cstdint>
@@ -17,4 +17,4 @@ Foo rs_foo(Foo f);
 
 } // extern "C"
 
-#endif // LIB_HPP
+#endif // FOO_HPP

@@ -1,2 +1,2 @@
 language = "C"
-include_guard = "LIB_H"
+include_guard = "FOO_H"

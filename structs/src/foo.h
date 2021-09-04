@@ -1,5 +1,5 @@
-#ifndef LIB_H
-#define LIB_H
+#ifndef FOO_H
+#define FOO_H
 
 #include <stdarg.h>
 #include <stdbool.h>
@@ -12,4 +12,4 @@ typedef struct Foo {
 
 struct Foo rs_foo(struct Foo f);
 
-#endif /* LIB_H */
+#endif /* FOO_H */
