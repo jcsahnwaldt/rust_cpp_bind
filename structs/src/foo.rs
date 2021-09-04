@@ -3,6 +3,19 @@ pub struct Foo {
   pub i: i32
 }
 
+impl Foo {
+
+  #[export_name = "Foo_set_i"]
+  pub extern "C" fn set_i(&mut self, i: i32) {
+    self.i = i;
+  }
+
+  #[export_name = "Foo_get_i"]
+  pub extern "C" fn get_i(&self) -> i32 {
+    return self.i;
+  }
+}
+
 #[no_mangle]
 pub extern "C" fn rs_foo(f: Foo) -> Foo {
   println!("Hello Rust World: {}", f.i);
