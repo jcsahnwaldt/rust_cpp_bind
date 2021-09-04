@@ -1,6 +1,8 @@
 #ifndef LIB_H
 #define LIB_H
 
-void foo(void);
+#include <stdint.h>
+
+int32_t rs_foo(int32_t);
 
 #endif // LIB_H

@@ -1,3 +1,3 @@
 fn main() {
-    project::foo();
+    project::rs_foo(1);
 }
