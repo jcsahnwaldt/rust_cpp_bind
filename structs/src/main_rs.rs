@@ -1,4 +1,4 @@
-use project::*;
+use foo::*;
 
 fn main() {
   let f = Foo {i: 1};
