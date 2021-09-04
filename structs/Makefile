@@ -1,3 +1,7 @@
+# CC := gcc-11
+CC := clang -mlinker-version=0 # for Homebrew clang
+CFLAGS := -Wall -Wextra -Wpedantic -O3
+
 main: main.c target/debug/libproject.a
 
 build:
