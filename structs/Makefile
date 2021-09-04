@@ -10,9 +10,15 @@ CARGO := CARGO_INCREMENTAL=0 cargo  # incremental uses hard links, leads to warn
 SRC := src
 BIN := target/debug
 
-run: $(BIN)/main_rs $(BIN)/main_c $(BIN)/main_cpp
+run: run_rs run_c run_cpp
+
+run_rs: $(BIN)/main_rs
 	./$(BIN)/main_rs
+
+run_c: $(BIN)/main_c
 	./$(BIN)/main_c
+
+run_cpp: $(BIN)/main_cpp
 	./$(BIN)/main_cpp
 
 $(BIN)/libfoo.a: $(SRC)/foo.rs
@@ -28,12 +34,10 @@ $(BIN)/%: $(SRC)/%.cpp $(BIN)/libfoo.a $(SRC)/foo.hpp
 	$(LINK.cpp) $(filter-out %.hpp,$^) $(LDLIBS) -o $@
 
 $(SRC)/%.h: cbindgen-c.toml $(SRC)/%.rs
-	cbindgen -c $< -o $@
-	touch $@
+	cbindgen -c $< -o $@ && touch $@
 
 $(SRC)/%.hpp: cbindgen-cpp.toml $(SRC)/%.rs
-	cbindgen -c $< -o $@
-	touch $@
+	cbindgen -c $< -o $@ && touch $@
 
 zip:
 	$(RM) *.zip
