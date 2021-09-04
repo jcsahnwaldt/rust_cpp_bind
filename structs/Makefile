@@ -29,9 +29,11 @@ $(BIN)/%: $(SRC)/%.cpp $(BIN)/libfoo.a $(SRC)/foo.hpp
 
 $(SRC)/%.h: cbindgen-c.toml $(SRC)/%.rs
 	cbindgen -c $< -o $@
+	touch $@
 
 $(SRC)/%.hpp: cbindgen-cpp.toml $(SRC)/%.rs
 	cbindgen -c $< -o $@
+	touch $@
 
 zip:
 	$(RM) *.zip
