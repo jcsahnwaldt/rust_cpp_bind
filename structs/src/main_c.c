@@ -3,12 +3,13 @@
 #include <stdio.h>
 
 static Foo c_foo(Foo f) {
-  printf("Hello C World: %d\n", f.i);
-  return (Foo){f.i + 1};
+  printf("Hello C World: %d\n", get_i(&f));
+  set_i(&f, get_i(&f) + 1);
+  return f;
 }
 
 int main(void) {
   Foo f = {1};
-  f = c_foo(f);
   f = rs_foo(f);
+  f = c_foo(f);
 }

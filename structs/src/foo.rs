@@ -5,12 +5,12 @@ pub struct Foo {
 
 impl Foo {
 
-  #[export_name = "Foo_set_i"]
+  #[no_mangle]
   pub extern "C" fn set_i(&mut self, i: i32) {
     self.i = i;
   }
 
-  #[export_name = "Foo_get_i"]
+  #[no_mangle]
   pub extern "C" fn get_i(&self) -> i32 {
     return self.i;
   }
