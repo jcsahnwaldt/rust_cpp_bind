@@ -4,7 +4,7 @@
 
 static Foo c_foo(Foo f) {
   printf("Hello C World: %d\n", f.i);
-  return (Foo){.i = f.i + 1};
+  return (Foo){f.i + 1};
 }
 
 int main(void) {
