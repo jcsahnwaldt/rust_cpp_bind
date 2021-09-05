@@ -1,7 +1,11 @@
 #ifndef FOO_HPP
 #define FOO_HPP
 
+#include <cstdarg>
 #include <cstdint>
+#include <cstdlib>
+#include <ostream>
+#include <new>
 
 // https://github.com/rust-lang/rust/blob/master/library/core/src/ptr/metadata.rs
 struct VTable {

@@ -1,7 +1,10 @@
 #ifndef FOO_H
 #define FOO_H
 
+#include <stdarg.h>
+#include <stdbool.h>
 #include <stdint.h>
+#include <stdlib.h>
 
 // https://github.com/rust-lang/rust/blob/master/library/core/src/ptr/metadata.rs
 typedef struct VTable {
@@ -42,4 +45,4 @@ struct FooDyn get_foo_bar(void);
 
 struct FooDyn get_foo_baz(void);
 
-#endif // FOO_H
+#endif /* FOO_H */
