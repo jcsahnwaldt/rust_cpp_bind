@@ -2,13 +2,8 @@
 
 #include <stdio.h>
 
-static void c_foo(Foo* f) {
-  inc(f, 2);
-  printf("C: %d\n", get(f));
-}
-
 int main(void) {
-  Foo f = get_foo();
-  rs_foo(&f);
-  c_foo(&f);
+  Foo f = {1};
+  printf("C: %p\n", &f);
+  foo(&f);
 }

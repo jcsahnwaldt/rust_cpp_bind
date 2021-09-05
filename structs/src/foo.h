@@ -10,12 +10,6 @@ typedef struct Foo {
   int32_t i;
 } Foo;
 
-void inc(struct Foo *self, int32_t i);
-
-int32_t get(const struct Foo *self);
-
-void rs_foo(struct Foo *f);
-
-struct Foo get_foo(void);
+void foo(const struct Foo *self);
 
 #endif /* FOO_H */

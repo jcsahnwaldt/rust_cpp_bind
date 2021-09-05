@@ -9,23 +9,15 @@
 
 struct Foo {
   int32_t i;
-  void inc(int32_t i);
-  int32_t get() const;
+  void foo() const;
 };
 
 extern "C" {
 
-void inc(Foo *self, int32_t i);
-
-int32_t get(const Foo *self);
-
-void rs_foo(Foo *f);
-
-Foo get_foo();
+void foo(const Foo *self);
 
 } // extern "C"
 
-void Foo::inc(int32_t i) { ::inc(this, i); }
-int32_t Foo::get() const { return ::get(this); }
+void Foo::foo() const { ::foo(this); }
 
 #endif // FOO_HPP

@@ -4,25 +4,8 @@ pub struct Foo {
 }
 
 impl Foo {
-
   #[no_mangle]
-  pub extern "C" fn inc(&mut self, i: i32) {
-    self.i += i;
+  pub extern "C" fn foo(&self) {
+    println!("Rust (Foo::foo): {:p}", self);
   }
-
-  #[no_mangle]
-  pub extern "C" fn get(&self) -> i32 {
-    return self.i;
-  }
-}
-
-#[no_mangle]
-pub extern "C" fn rs_foo(f: &mut Foo) {
-  f.inc(1);
-  println!("Rust: {}", f.get());
-}
-
-#[no_mangle]
-pub extern "C" fn get_foo() -> Foo {
-  return Foo {i: 0}
 }
