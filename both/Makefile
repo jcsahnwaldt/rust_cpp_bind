@@ -1,8 +1,9 @@
 # CC := gcc-11
 # CXX := g++-11
-CC := clang -mlinker-version=0  # for Homebrew clang
-CXX := clang++ -mlinker-version=0  # for Homebrew clang
-CFLAGS := -Wall -Wextra -Wpedantic -Wno-format-pedantic -O3
+CLANG_FIX := -mlinker-version=0  # for Homebrew clang
+CC := clang $(CLANG_FIX)
+CXX := clang++ $(CLANG_FIX)
+CFLAGS := -Wall -Wextra -Wpedantic -Wno-format -Wno-format-pedantic -O3
 CXXFLAGS := $(CFLAGS)
 LDLIBS := -pthread -ldl  # for Ubuntu GCC and Clang
 CARGO := CARGO_INCREMENTAL=0 cargo  # incremental uses hard links, leads to warnings on VM
