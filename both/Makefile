@@ -40,9 +40,5 @@ $(SRC)/%.h: cbindgen-c.toml $(SRC)/%.rs
 $(SRC)/%.hpp: cbindgen-cpp.toml $(SRC)/%.rs
 	cbindgen -c $< -o $@ && touch $@
 
-zip:
-	$(RM) *.zip
-	zip -r foo.zip Makefile *.toml $(SRC)/*
-
 clean:
-	$(RM) -r *.zip target/ *.lock
+	$(RM) -r target/ *.lock
