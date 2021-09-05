@@ -1,3 +1,5 @@
+#![allow(improper_ctypes_definitions)] // dyn Foo return types
+
 pub trait Foo {
   extern "C" fn foo(&self);
 }
@@ -34,6 +36,7 @@ pub extern "C" fn get_baz() -> &'static dyn Foo {
 
 #[no_mangle]
 pub extern "C" fn foo() {
+  println!("Hello Rust!");
   let bar = get_bar();
   println!("bar: {:p}", &bar);
   bar.foo();

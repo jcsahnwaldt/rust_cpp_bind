@@ -18,7 +18,7 @@ typedef struct FooFns {
 } FooFns;
 
 typedef struct FooDyn {
-  Foo* foo;
+  Foo* self;
   FooFns* fns;
 } FooDyn;
 

@@ -18,8 +18,9 @@ struct FooFns {
 };
 
 struct FooDyn {
-  Foo* foo;
+  Foo* self;
   FooFns* fns;
+  void foo() { this->fns->foo(this->self); }
 };
 
 extern "C" {
