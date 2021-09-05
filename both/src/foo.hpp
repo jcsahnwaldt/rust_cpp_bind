@@ -5,34 +5,58 @@
 
 // https://github.com/rust-lang/rust/blob/master/library/core/src/ptr/metadata.rs
 struct VTable {
-  void (*drop_in_place)(void*);
-  uintptr_t size_of;
-  uintptr_t align_of;
+  void (* const drop_in_place)(void*);
+  const uintptr_t size_of;
+  const uintptr_t align_of;
 };
 
-template<class T, class Fns>
+template<class Obj, class Fns>
 struct Dyn {
-  T* self;
-  Fns* fns;
+  Obj* const self;
+  Fns* const fns;
 };
 
-struct Foo;
+struct FooObj;
 
-struct FooFns: VTable {
-  void (*foo)(Foo*);
+struct FooFns {
+  VTable metadata;
+  void (* const foo)(const FooObj *self);
 };
 
-struct FooDyn: Dyn<Foo, FooFns> {
-  void foo() { fns->foo(self); }
+struct FooDyn: Dyn<FooObj, FooFns> {
+  void foo() const { fns->foo(self); }
+};
+
+struct Bar {
+  int32_t i;
+  void foo() const;
+};
+
+struct Baz {
+  int32_t j;
+  void foo() const;
 };
 
 extern "C" {
 
-FooDyn get_bar(void);
-FooDyn get_baz(void);
+void Bar_foo(const Bar *self);
 
-void foo(void);
+void Baz_foo(const Baz *self);
+
+const Bar *get_bar();
+
+const Baz *get_baz();
+
+FooDyn get_foo_bar();
+
+FooDyn get_foo_baz();
+
+void run_rs();
 
 } // extern "C"
+
+void Bar::foo() const { Bar_foo(this); }
+
+void Baz::foo() const { Baz_foo(this); }
 
 #endif // FOO_HPP

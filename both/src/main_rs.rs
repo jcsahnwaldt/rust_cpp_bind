@@ -1,5 +1,5 @@
 use foo::*;
 
 fn main() {
-  foo();
+  run_rs();
 }

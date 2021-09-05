@@ -5,26 +5,43 @@
 
 // https://github.com/rust-lang/rust/blob/master/library/core/src/ptr/metadata.rs
 typedef struct VTable {
-  void (*drop_in_place)(void*);
-  uintptr_t size_of;
-  uintptr_t align_of;
+  void (* const drop_in_place)(void*);
+  const uintptr_t size_of;
+  const uintptr_t align_of;
 } VTable;
 
-typedef struct Foo Foo;
+typedef struct FooObj FooObj;
 
 typedef struct FooFns {
   VTable metadata;
-  void (*foo)(Foo*);
+  void (* const foo)(const struct FooObj *self);
 } FooFns;
 
 typedef struct FooDyn {
-  Foo* self;
-  FooFns* fns;
+  struct FooObj* const self;
+  struct FooFns* const fns;
 } FooDyn;
 
-FooDyn get_bar(void);
-FooDyn get_baz(void);
+typedef struct Bar {
+  int32_t i;
+} Bar;
 
-void foo(void);
+typedef struct Baz {
+  int32_t j;
+} Baz;
 
-#endif /* FOO_H */
+void Bar_foo(const struct Bar *self);
+
+void Baz_foo(const struct Baz *self);
+
+const struct Bar *get_bar(void);
+
+const struct Baz *get_baz(void);
+
+struct FooDyn get_foo_bar(void);
+
+struct FooDyn get_foo_baz(void);
+
+void run_rs(void);
+
+#endif // FOO_H

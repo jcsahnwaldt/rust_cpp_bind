@@ -5,15 +5,24 @@
 
 int main() {
   std::cout << "Hello C++!\n";
-  FooDyn bar = get_bar();
-  std::cout << "bar: " << &bar << "\n";
-  std::cout << "bar.self: " << bar.self << " *bar.self: " << *(int*)bar.self << " bar.fns: " << bar.fns << " bar.fns->foo: " << (void*)bar.fns->foo << "\n";
-  bar.fns->foo(bar.self);
-  bar.foo();
-  FooDyn baz = get_baz();
-  std::cout << "baz: " << &baz << "\n";
-  std::cout << "baz.self: " << baz.self << " *baz.self: " << *(int*)baz.self << " baz.fns: " << baz.fns << " baz.fns->foo: " << (void*)baz.fns->foo << "\n";
-  baz.fns->foo(baz.self);
-  baz.foo();
-  foo();
+
+  FooDyn foo_bar = get_foo_bar();
+  std::cout << "C++: foo_bar.self: " << foo_bar.self << " foo_bar.fns->foo: " << (void*)foo_bar.fns->foo << "\n";
+  foo_bar.fns->foo(foo_bar.self);
+  foo_bar.foo();
+  const Bar* bar = get_bar();
+  std::cout << "C++: bar: " << bar << " Bar_foo: " << (void*)Bar_foo << "\n";
+  Bar_foo(bar);
+  bar->foo();
+
+  FooDyn foo_baz = get_foo_baz();
+  std::cout << "C++: foo_baz.self: " << foo_baz.self << " foo_baz.fns->foo: " << (void*)foo_baz.fns->foo << "\n";
+  foo_baz.fns->foo(foo_baz.self);
+  foo_baz.foo();
+  const Baz* baz = get_baz();
+  std::cout << "C++: baz: " << baz << " Baz_foo: " << (void*)Baz_foo << "\n";
+  Baz_foo(baz);
+  baz->foo();
+
+  run_rs();
 }
