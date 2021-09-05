@@ -6,7 +6,7 @@ pub struct Foo {
 impl Foo {
   #[no_mangle]
   pub extern "C" fn foo(&self) {
-    println!("Rust (Foo::foo): {:p}", self);
+    println!("Rust (Foo::foo): self: {:p}", self);
   }
 }
 
