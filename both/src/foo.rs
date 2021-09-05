@@ -1,4 +1,5 @@
-#![allow(improper_ctypes_definitions)] // dyn Foo return types
+// suppress warnings about extern "C" dyn Foo return type
+#![allow(improper_ctypes_definitions)]
 
 pub trait Foo {
   extern "C" fn foo(&self);
