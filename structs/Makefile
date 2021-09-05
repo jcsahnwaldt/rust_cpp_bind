@@ -1,7 +1,8 @@
 # CC := gcc-11
 # CXX := g++-11
-CC := clang -mlinker-version=0  # for Homebrew clang
-CXX := clang++ -mlinker-version=0  # for Homebrew clang
+CLANG_FIX := -mlinker-version=0  # for Homebrew clang
+CC := clang $(CLANG_FIX)
+CXX := clang++ $(CLANG_FIX)
 CFLAGS := -Wall -Wextra -Wpedantic -Wno-format -Wno-format-pedantic -O3
 CXXFLAGS := $(CFLAGS)
 LDLIBS := -pthread -ldl  # for Ubuntu GCC and Clang
