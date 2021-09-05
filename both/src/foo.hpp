@@ -10,16 +10,20 @@ struct VTable {
   uintptr_t align_of;
 };
 
+template<class T, class Fns>
+struct Dyn {
+  T* self;
+  Fns* fns;
+};
+
 struct Foo;
 
 struct FooFns: VTable {
   void (*foo)(Foo*);
 };
 
-struct FooDyn {
-  Foo* self;
-  FooFns* fns;
-  void foo() { this->fns->foo(this->self); }
+struct FooDyn: Dyn<Foo, FooFns> {
+  void foo() { fns->foo(self); }
 };
 
 extern "C" {
