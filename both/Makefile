@@ -13,13 +13,13 @@ BIN := target/debug
 run: run_rs run_c run_cpp
 
 run_rs: $(BIN)/main_rs
-	./$(BIN)/main_rs
+	./$<
 
 run_c: $(BIN)/main_c
-	./$(BIN)/main_c
+	./$<
 
 run_cpp: $(BIN)/main_cpp
-	./$(BIN)/main_cpp
+	./$<
 
 $(BIN)/libfoo.a: $(SRC)/foo.rs
 	$(CARGO) build --lib
