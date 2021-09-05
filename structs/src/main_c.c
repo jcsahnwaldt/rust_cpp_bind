@@ -4,11 +4,11 @@
 
 static void c_foo(Foo* f) {
   inc(f, 2);
-  printf("Hello C World: %d\n", get(f));
+  printf("C: %d\n", get(f));
 }
 
 int main(void) {
-  Foo f = {0};
+  Foo f = get_foo();
   rs_foo(&f);
   c_foo(&f);
 }

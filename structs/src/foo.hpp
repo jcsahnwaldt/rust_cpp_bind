@@ -21,6 +21,8 @@ int32_t get(const Foo *self);
 
 void rs_foo(Foo *f);
 
+Foo get_foo();
+
 } // extern "C"
 
 void Foo::inc(int32_t i) { ::inc(this, i); }

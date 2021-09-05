@@ -19,5 +19,10 @@ impl Foo {
 #[no_mangle]
 pub extern "C" fn rs_foo(f: &mut Foo) {
   f.inc(1);
-  println!("Hello Rust World: {}", f.get());
+  println!("Rust: {}", f.get());
+}
+
+#[no_mangle]
+pub extern "C" fn get_foo() -> Foo {
+  return Foo {i: 0}
 }

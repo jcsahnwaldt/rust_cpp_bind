@@ -16,4 +16,6 @@ int32_t get(const struct Foo *self);
 
 void rs_foo(struct Foo *f);
 
+struct Foo get_foo(void);
+
 #endif /* FOO_H */
