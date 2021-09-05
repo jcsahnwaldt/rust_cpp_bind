@@ -16,6 +16,8 @@ extern "C" {
 
 void foo(const Foo *self);
 
+const Foo *get_foo();
+
 } // extern "C"
 
 void Foo::foo() const { ::foo(this); }

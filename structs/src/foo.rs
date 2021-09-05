@@ -9,3 +9,8 @@ impl Foo {
     println!("Rust (Foo::foo): {:p}", self);
   }
 }
+
+#[no_mangle]
+pub extern "C" fn get_foo() -> &'static Foo {
+  return &Foo {i: 1};
+}

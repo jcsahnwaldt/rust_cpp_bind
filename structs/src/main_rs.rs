@@ -1,6 +1,6 @@
 use foo::*;
 
 fn main() {
-  let f = Foo {i: 0};
+  let f = get_foo();
   f.foo();
 }

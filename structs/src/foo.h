@@ -12,4 +12,6 @@ typedef struct Foo {
 
 void foo(const struct Foo *self);
 
+const struct Foo *get_foo(void);
+
 #endif /* FOO_H */

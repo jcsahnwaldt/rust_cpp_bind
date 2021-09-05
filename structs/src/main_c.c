@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int main(void) {
-  Foo f = {1};
-  printf("C: %p\n", &f);
-  foo(&f);
+  const struct Foo *f = get_foo();
+  printf("C: %p\n", f);
+  foo(f);
 }
