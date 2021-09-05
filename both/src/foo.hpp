@@ -12,8 +12,7 @@ struct VTable {
 
 struct Foo;
 
-struct FooFns {
-  VTable metadata;
+struct FooFns: VTable {
   void (*foo)(Foo*);
 };
 
