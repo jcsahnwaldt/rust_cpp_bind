@@ -3,8 +3,8 @@
 CLANG_FIX := -mlinker-version=0  # for Homebrew clang
 CC := clang $(CLANG_FIX)
 CXX := clang++ $(CLANG_FIX)
-CFLAGS := -Wall -Wextra -Wpedantic -Wno-format -Wno-format-pedantic -O3
-CXXFLAGS := $(CFLAGS)
+CXXFLAGS := -Wall -Wextra -Wpedantic -O3
+CFLAGS := $(CXXFLAGS) -Wno-format -Wno-format-pedantic  # suppress %p format warnings
 LDLIBS := -pthread -ldl  # for Ubuntu GCC and Clang
 CARGO := CARGO_INCREMENTAL=0 cargo  # incremental uses hard links, leads to warnings on VM
 
@@ -34,5 +34,15 @@ $(BIN)/%: $(SRC)/%.c $(BIN)/libfoo.a $(SRC)/foo.h
 $(BIN)/%: $(SRC)/%.cpp $(BIN)/libfoo.a $(SRC)/foo.hpp
 	$(LINK.cpp) $(filter-out %.hpp,$^) $(LDLIBS) -o $@
 
+$(SRC)/%.h: cbindgen-c.toml $(SRC)/%.rs
+	cbindgen -c $< -o $@ && touch $@
+
+$(SRC)/%.hpp: cbindgen-cpp.toml $(SRC)/%.rs
+	cbindgen -c $< -o $@ && touch $@
+
+zip:
+	$(RM) *.zip
+	zip -r foo.zip Makefile *.toml $(SRC)/*
+
 clean:
-	$(RM) -r target/ *.lock
+	$(RM) -r *.zip target/ *.lock
