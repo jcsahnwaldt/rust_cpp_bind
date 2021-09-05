@@ -1,20 +1,16 @@
 #include "foo.hpp"
 
 #include <iostream>
-
-static void c_foo(Foo* f) {
-  inc(f, 2);
-  std::cout << "Hello C World: " << get(f) << "\n";
-}
-
-static void cpp_foo(Foo* f) {
-  f->inc(3);
-  std::cout << "Hello C++ World: " << f->get() << "\n";
-}
+#include <stdio.h>
 
 int main() {
-  Foo f{0};
-  rs_foo(&f);
-  c_foo(&f);
-  cpp_foo(&f);
+  FooDyn bar = get_bar();
+  std::cout << "bar: " << &bar << "\n";
+  printf("bar.foo: %p *bar.foo: %d bar.fns: %p bar.fns->foo: %p\n", bar.foo, *(int*)bar.foo, bar.fns, bar.fns->foo);
+  bar.fns->foo(bar.foo);
+  FooDyn baz = get_baz();
+  printf("baz: %p\n", &baz);
+  printf("baz.foo: %p *baz.foo: %d baz.fns: %p baz.fns->foo: %p\n", baz.foo, *(int*)baz.foo, baz.fns, baz.fns->foo);
+  baz.fns->foo(baz.foo);
+  foo();
 }

@@ -1,29 +1,34 @@
 #ifndef FOO_HPP
 #define FOO_HPP
 
-#include <cstdarg>
 #include <cstdint>
-#include <cstdlib>
-#include <ostream>
-#include <new>
 
-struct Foo {
-  int32_t i;
-  void inc(int32_t i);
-  int32_t get() const;
+// https://github.com/rust-lang/rust/blob/master/library/core/src/ptr/metadata.rs
+struct VTable {
+  void (*drop_in_place)(void*);
+  uintptr_t size_of;
+  uintptr_t align_of;
+};
+
+struct Foo;
+
+struct FooFns {
+  VTable metadata;
+  void (*foo)(Foo*);
+};
+
+struct FooDyn {
+  Foo* foo;
+  FooFns* fns;
 };
 
 extern "C" {
 
-void inc(Foo *self, int32_t i);
+FooDyn get_bar(void);
+FooDyn get_baz(void);
 
-int32_t get(const Foo *self);
-
-void rs_foo(Foo *f);
+void foo(void);
 
 } // extern "C"
-
-void Foo::inc(int32_t i) { ::inc(this, i); }
-int32_t Foo::get() const { return ::get(this); }
 
 #endif // FOO_HPP
