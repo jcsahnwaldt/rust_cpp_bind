@@ -1,0 +1,12 @@
+[package]
+name = "foo"
+version = "0.0.0"
+edition = "2018"
+
+[lib]
+path = "src/foo.rs"
+crate-type = ["rlib", "staticlib"]
+
+[[bin]]
+name = "main_rs"
+path = "src/main_rs.rs"
