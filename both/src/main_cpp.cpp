@@ -1,7 +1,6 @@
 #include "foo.hpp"
 
 #include <iostream>
-#include <stdio.h>
 
 int main() {
   const Bar* bar = get_bar();
