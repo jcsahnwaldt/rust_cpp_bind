@@ -42,6 +42,4 @@ struct FooDyn get_foo_bar(void);
 
 struct FooDyn get_foo_baz(void);
 
-void run_rs(void);
-
 #endif // FOO_H

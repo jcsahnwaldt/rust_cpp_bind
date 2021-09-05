@@ -51,8 +51,6 @@ FooDyn get_foo_bar();
 
 FooDyn get_foo_baz();
 
-void run_rs();
-
 } // extern "C"
 
 void Bar::foo() const { Bar_foo(this); }

@@ -48,20 +48,3 @@ pub extern "C" fn get_foo_bar() -> &'static dyn Foo {
 pub extern "C" fn get_foo_baz() -> &'static dyn Foo {
   return get_baz();
 }
-
-#[no_mangle]
-pub extern "C" fn run_rs() {
-  println!("Hello Rust!");
-
-  let bar = get_bar();
-  println!("Rust: bar: {:p}", bar);
-  bar.foo();
-  let foo_bar = get_foo_bar();
-  foo_bar.foo();
-
-  let baz = get_baz();
-  println!("Rust: baz: {:p}", baz);
-  baz.foo();
-  let foo_baz = get_foo_baz();
-  foo_baz.foo();
-}
