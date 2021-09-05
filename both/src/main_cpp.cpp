@@ -1,6 +1,10 @@
 #include "foo.hpp"
 
 #include <iostream>
+#include <type_traits>
+
+static_assert(std::is_standard_layout<FooFns>::value, "FooFns must have standard layout");
+static_assert(std::is_standard_layout<FooDyn>::value, "FooDyn must have standard layout");
 
 int main() {
   const Bar* bar = get_bar();
