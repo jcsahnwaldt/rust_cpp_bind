@@ -21,5 +21,5 @@ a Makefile. Running `make run` compiles and runs all code. Tested on macOS
 and Ubuntu.
 
 If you change `foo.rs` and call `make run` again, CBindGen will overwrite the
-C and C++ headers, which will cause the C++ compilation to fail. In that case,
-just restore the previous version of `foo.hpp`.
+C and C++ headers, which will cause the C and C++ compilation to fail. In that
+case, just restore the previous version of `foo.h` and `foo.hpp`.
