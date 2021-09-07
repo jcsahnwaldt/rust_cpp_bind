@@ -1,7 +1,7 @@
-run clean: both structs traits
+run clean: structs traits both
 	@:
 
-both structs traits:
+structs traits both:
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: both structs traits
+.PHONY: structs traits both
