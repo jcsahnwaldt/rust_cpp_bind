@@ -1,5 +1,5 @@
-# CC := gcc-11
-# CXX := g++-11
+# CC := gcc
+# CXX := g++
 CLANG_FIX := -mlinker-version=0  # for Homebrew clang
 CC := clang $(CLANG_FIX)
 CXX := clang++ $(CLANG_FIX)
