@@ -7,7 +7,6 @@
 #include <ostream>
 #include <new>
 
-// https://github.com/rust-lang/rust/blob/master/library/core/src/ptr/metadata.rs
 struct VTable {
   void (* const drop_in_place)(void*);
   const uintptr_t size_of;
